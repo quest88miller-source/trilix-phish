@@ -3,10 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>CashDeskManager - Login</title>
-    <!-- Bootstrap CSS za stilizaciju kao original -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="https://dsds.trilix.hr/CashDeskManager/resources/themes/xpos/favicon.ico">
+
+    <!-- Ugrađeni Bootstrap CSS (kopiran sa CDN-a) -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Ugrađeni XPOS tema CSS (kopiran sa originalnog sajta) -->
     <style>
-        body { background-color: #dcdcdc; font-family: Arial, sans-serif; }
+        /* Ugrađeni stilovi iz /CashDeskManager/resources/themes/xpos/style-xpos.css */
+        body {
+            background-color: #dcdcdc;
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
         .container#loginFormContainer {
             max-width: 400px;
             margin: 80px auto;
@@ -15,11 +25,34 @@
             border-radius: 8px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.15);
         }
-        #loginImg { display: block; margin: 0 auto 20px auto; }
-        .form-horizontal .form-group { margin-bottom: 15px; }
-        .row { margin-top: 20px; }
-        .btn-primary { background-color: #b30000; border-color: #b30000; }
-        .btn-primary:hover { background-color: #800000; border-color: #800000; }
+        #loginImg {
+            display: block;
+            margin: 0 auto 20px auto;
+        }
+        .form-horizontal .form-group {
+            margin-bottom: 15px;
+        }
+        .form-horizontal .control-label {
+            text-align: left;
+            font-weight: normal;
+        }
+        .btn-primary {
+            background-color: #b30000;
+            border-color: #b30000;
+            color: white;
+            font-weight: bold;
+        }
+        .btn-primary:hover, .btn-primary:focus {
+            background-color: #800000;
+            border-color: #800000;
+        }
+        .row {
+            margin-top: 20px;
+            font-size: small;
+            color: rgb(117, 117, 117);
+        }
+        /* Sklanjanje inline DarkReader stilova ako postoje */
+        [data-darkreader-inline-color] { color: inherit !important; }
     </style>
 </head>
 <body>
@@ -31,36 +64,46 @@
         <input type="hidden" name="_csrf" value="edbc40c5-3ae2-4040-b068-8e700ad0d79c">
 
         <div class="form-group">
-            <label class="control-label" for="oib">OIB:</label>
-            <input type="text" class="form-control" id="oib" name="oib" autofocus="autofocus">
-        </div>
-
-        <div class="form-group">
-            <label class="control-label" for="username">Korisničko ime:</label>
-            <input type="text" class="form-control" id="username" name="username">
-        </div>
-
-        <div class="form-group">
-            <label class="control-label" for="password">Zaporka:</label>
-            <input type="password" class="form-control" id="password" name="password">
-        </div>
-
-        <div class="form-group">
-            <div class="checkbox">
-                <label><input type="checkbox" id="remember-me" name="remember-me"> Zapamti me</label>
+            <label class="control-label col-sm-3" for="oib">OIB:</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" id="oib" name="oib" autofocus="autofocus">
             </div>
         </div>
 
         <div class="form-group">
-            <button type="button" class="btn btn-primary" id="loginBtn">Login</button>
+            <label class="control-label col-sm-3" for="username">Korisničko ime:</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" id="username" name="username">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-3" for="password">Zaporka:</label>
+            <div class="col-sm-9">
+                <input type="password" class="form-control" id="password" name="password">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-9">
+                <div class="checkbox">
+                    <label><input type="checkbox" id="remember-me" name="remember-me"> Zapamti me</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-9">
+                <button type="button" class="btn btn-primary" id="loginBtn">Login</button>
+            </div>
         </div>
 
         <div class="row" style="margin-bottom: 0">
             <div class="col-sm-6" align="left">
-                <span style="color: rgb(117, 117, 117); font-size: small;">3.8.0 (b4183b1)</span>
+                <span>3.8.0 (b4183b1)</span>
             </div>
             <div class="col-sm-6" align="right">
-                <span style="color: rgb(117, 117, 117); font-size: small;">powered by Trilix</span>
+                <span>powered by Trilix</span>
             </div>
         </div>
     </form>
